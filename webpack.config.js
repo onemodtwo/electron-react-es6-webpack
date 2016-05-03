@@ -2,7 +2,8 @@ const path = require('path');
 const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 
 const PATHS = {
-  app: path.join(__dirname, 'app/components/'),
+  app: path.join(__dirname, 'app/'),
+  components: path.join(__dirname, 'app/components/'),
   build: path.join(__dirname, 'build/')
 }
 
@@ -11,7 +12,7 @@ const options = {
   // latter form given it's convenient with more complex configurations.
   // devtool: 'eval-source-map',
   entry: {
-    app: PATHS.app + 'index.jsx'
+    app: PATHS.components + 'index.jsx'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -25,7 +26,7 @@ const options = {
       {
         test: /\.jsx?$/,
         loaders: ['eslint'],
-        include: PATHS.app
+        include: PATHS.components
       }
     ],
     loaders: [
@@ -42,7 +43,7 @@ const options = {
         query: {
           cacheDirectory: true
         },
-        include: PATHS.app
+        include: PATHS.components
       }
     ]
   }
